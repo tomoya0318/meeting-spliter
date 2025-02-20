@@ -1,18 +1,9 @@
 import json
 import sys
-from pathlib import Path
 
 from classifer import ClassifyMember
-from models import Attendance, Grade, Member
-
-
-def load_member_data() -> list[Member]:
-    """メンバーデータの読み込み"""
-    member_data_path = Path(__file__).parents[1] / "data" / "member.json"
-    with open(member_data_path, "r") as f:
-        member_data = [Member(**data) for data in json.load(f)]
-
-    return member_data
+from models import Attendance, Grade
+from utils import load_member_data
 
 
 def main(args: list[str] | None = None):
@@ -68,6 +59,7 @@ def main(args: list[str] | None = None):
                 sys.exit(1)
             name = args[3]
             cl.add_member(Grade[grade_input], name)
+            print(f"{name} を追加しました")
             sys.exit(0)
 
         elif args[1] == "remove":
@@ -76,6 +68,7 @@ def main(args: list[str] | None = None):
                 sys.exit(1)
             name = args[2]
             cl.remove_member(name)
+            print(f"{name} を削除しました")
             sys.exit(0)
         else:
             print("不正な引数です")

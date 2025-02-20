@@ -1,4 +1,5 @@
 from enum import Enum
+
 from pydantic import BaseModel
 
 
@@ -20,4 +21,5 @@ class Member(BaseModel):
     grade: Grade
     name: str
     last: Attendance
+    previous: Attendance
     previous: Attendance

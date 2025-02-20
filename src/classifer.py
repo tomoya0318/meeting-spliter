@@ -1,10 +1,12 @@
 import json
+import os
 import random
 from collections import OrderedDict, defaultdict
 from pathlib import Path
 
 from grade import GradeClassifier
 from models import Attendance, Grade, Member
+from utils import ensure_dir_exists
 
 
 class ClassifyMember:
@@ -56,6 +58,7 @@ class ClassifyMember:
     def _dump_to_json(self):
         members_dict = [member.model_dump() for member in self.members]
         member_data_path = Path(__file__).parents[1] / "data" / "member.json"
+        ensure_dir_exists(member_data_path)
         with open(member_data_path, "w", encoding="utf-8") as f:
             json.dump(members_dict, f, ensure_ascii=False, indent=4)
 
@@ -70,5 +73,4 @@ class ClassifyMember:
         random.shuffle(weight_list)
 
         grade_order = {grade: weight_list.pop() for grade in Grade}
-        return grade_order
         return grade_order
