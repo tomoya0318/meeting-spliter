@@ -1,0 +1,19 @@
+[tool.poetry]
+authors = ["tomoya-n <s266227@wakayama-u.ac.jp>"]
+description = ""
+name = "meeting-spliter"
+packages = [{include = "*", from = "src"}]
+readme = "README.md"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+pydantic = "^2.10.6"
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.0"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
