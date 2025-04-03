@@ -21,3 +21,8 @@ python main.py add "学年" "氏名"
 python main.py remove "氏名"
 ```
 
+#### 学年を更新したい場合
+学期の始まりで学年が更新された時，以下のような形式で入力してください．
+```
+python main.py upgrade
+```
