@@ -41,6 +41,26 @@ class ClassifyMember:
         self.members = next_members
         self._dump_to_json()
 
+    def upgrade_grades(self):
+        """学年を1つずつアップグレードする
+        B2 -> B3
+        B3 -> B4
+        B4 -> M1
+        M1 -> M2
+        """
+        grade_map = {
+            "B2": "B3",
+            "B3": "B4",
+            "B4": "M1",
+            "M1": "M2"
+        }
+
+        for member in self.members:
+            if member.grade.value in grade_map:
+                member.grade = Grade[grade_map[member.grade.value]]
+
+        self._dump_to_json()
+
     def get_attendance(self) -> dict[Attendance, list[str]]:
         return self.attendance_data
 

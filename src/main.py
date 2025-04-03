@@ -72,6 +72,13 @@ def main(args: list[str] | None = None):
             cl.remove_member(name)
             print(f"{name} を削除しました")
             sys.exit(0)
+
+        elif args[1] == "upgrade":
+            # メンバーの学年を上げる
+            cl.upgrade_grades()
+            print(f"{len(cl.members)}人のメンバーの学年を更新しました")
+            sys.exit(0)
+
         else:
             print("不正な引数です")
             sys.exit(1)
