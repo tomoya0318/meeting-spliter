@@ -12,6 +12,8 @@ def main(args: list[str] | None = None):
     cl = ClassifyMember(members)
 
     if not args:
+        sys.exit(1)
+    if len(args) == 1:
         cl.classify()
         attendance_data = cl.get_attendance()
         before_str = ", ".join(attendance_data[Attendance.BEFORE])
